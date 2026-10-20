@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pluffy - Smoothie Bowls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #8B1E24;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.6s ease, color 0.6s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 24px;
+            border-radius: 50px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        .user-profile {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero {
+            text-align: center;
+            position: relative;
+            min-height: 350px;
+        }
+
+        .flavor-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .bowl-container {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 30px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border: 4px solid rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .bowl-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 20px;
+        }
+
+        .cta-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0,0,0,0.2);
+            padding: 8px 8px 8px 20px;
+            border-radius: 50px;
+        }
+
+        .btn-buy {
+            background: #fff;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .price {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .description {
+            max-width: 300px;
+            text-align: left;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            opacity: 0.85;
+        }
+
+        .slider-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .control-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .designer-tag {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.75rem;
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-footer {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                text-align: center;
+            }
+            .description {
+                text-align: center;
+            }
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">PLUFFY</div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Recipes</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+        </header>
+
+        <main class="hero">
+            <h1 class="flavor-title" id="flavor-title">PINK BERRY</h1>
+            
+            <div class="bowl-container">
+                <img id="bowl-image" src="https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80" alt="Smoothie Bowl">
+            </div>
+
+            <div class="hero-footer">
+                <div class="cta-box">
+                    <button class="btn-buy">Buy Now</button>
+                    <span class="price" id="flavor-price">$20</span>
+                </div>
+
+                <p class="description" id="flavor-description">
+                    Raspberry Açaí Vegan Protein Shake Packed with Antioxidants Loaded with a Silky Smooth Bowl.
+                </p>
+
+                <div class="slider-controls">
+                    <button class="control-btn" id="prev-btn">&#8592;</button>
+                    <button class="control-btn" id="next-btn">&#8594;</button>
+                </div>
+            </div>
+        </main>
+
+        <div class="designer-tag">Salmaan Design</div>
+    </div>
+
+    <script>
+        // Website data extracted from the design video
+        const websiteData = {
+          "slides": [
+            {
+              "flavor": "PINK BERRY",
+              "theme_color": "#8B1E24",
+              "price": "$20",
+              "description": "Raspberry Açaí Vegan Protein Shake Packed with Antioxidants Loaded with a Silky Smooth Bowl.",
+              "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+              "flavor": "PEACH BERRY",
+              "theme_color": "#586930",
+              "price": "$20",
+              "description": "Exotic Kiwi Vitamin Packed Power Shake 100% Wholesome Bowl. Loaded with a Silky Smooth Bowl.",
+              "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+              "flavor": "BLUEBERRY",
+              "theme_color": "#1B3B6F",
+              "price": "$20",
+              "description": "Super Blue Blueberry Power Shakes Packed with Antioxidants Loaded with a Silky Smooth Bowl.",
+              "image": "https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+              "flavor": "STRAWBERRY",
+              "theme_color": "#A2142F",
+              "price": "$20",
+              "description": "Sweet, Rich Vitamin Packed Power Shake 100% Wholesome Bowl. Loaded with a Silky Smooth Bowl.",
+              "image": "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=600&q=80"
+            }
+          ]
+        };
+
+        let currentIndex = 0;
+        const bodyEl = document.body;
+        const titleEl = document.getElementById('flavor-title');
+        const imageEl = document.getElementById('bowl-image');
+        const priceEl = document.getElementById('flavor-price');
+        const descEl = document.getElementById('flavor-description');
+        
+        function updateSlide(index) {
+            const slide = websiteData.slides[index];
+            bodyEl.style.backgroundColor = slide.theme_color;
+            titleEl.textContent = slide.flavor;
+            imageEl.src = slide.image;
+            priceEl.textContent = slide.price;
+            descEl.textContent = slide.description;
+        }
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % websiteData.slides.length;
+            updateSlide(currentIndex);
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + websiteData.slides.length) % websiteData.slides.length;
+            updateSlide(currentIndex);
+        });
+    </script>
+</body>
+</html>
